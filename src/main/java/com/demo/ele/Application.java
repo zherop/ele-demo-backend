@@ -2,11 +2,9 @@ package com.demo.ele;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.util.ResourceUtils;
 
 /**
  * @author 曾鹏
@@ -17,11 +15,7 @@ import org.springframework.util.ResourceUtils;
 public class Application {
 
 	public static void main(String[] args) throws IOException {
-		URL classPath = ResourceUtils.getURL("classpath:");
-		String dbPath = new File(classPath.getPath()).getAbsolutePath() + File.separator + "demodb";
-		if ("jar".equals(classPath.getProtocol())) {
-			dbPath = new File("classes/demodb").getAbsolutePath();
-		}
+		String dbPath = new File("appdata/demodb").getAbsolutePath();
 		System.setProperty("demodb", dbPath);
 		SpringApplication.run(Application.class, args);
 	}
