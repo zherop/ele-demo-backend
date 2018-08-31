@@ -1,5 +1,7 @@
 FROM docker.io/maven:3.5.4-jdk-8
-VOLUME /tmp
-ADD ele-demo-backend.jar ele-demo-backend.jar
 ENV DOCKER_HOST = "tcp://192.168.137.95:2375"
-ENTRYPOINT [ "sh", "-c", "java -jar /ele-demo-backend.jar" ]
+ARG JAR_FILE
+ADD ${JAR_FILE} app.jar
+RUN bash -c 'touch /app.jar'
+EXPOSE 8800
+ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
