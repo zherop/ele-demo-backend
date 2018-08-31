@@ -3,5 +3,5 @@ ENV DOCKER_HOST = "tcp://192.168.137.95:2375"
 ARG JAR_FILE
 ADD ${JAR_FILE} app.jar
 RUN bash -c 'touch /app.jar'
-EXPOSE 8800
+EXPOSE 8080
 ENTRYPOINT [ "sh", "-c", "java -jar /app.jar" ]
